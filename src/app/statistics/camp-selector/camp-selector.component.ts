@@ -11,7 +11,7 @@ import { CampService } from "../../services/camp.service";
 export class CampSelectorComponent implements OnInit {
 
     camps: Array<Camp> = [];
-    activeCamp: Camp;
+    activeCamp: Camp = new Camp();
 
     constructor (private campService: CampService) {
     }
