@@ -6,19 +6,28 @@ import { environment } from "../../environments/environment";
 import { Camp } from "../classes/camp";
 import { of } from "rxjs/internal/observable/of";
 import { MessageService } from "./message.service";
+import { StorageService } from "./storage.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class CampService {
 
-    constructor (private http: HttpClient, private messageService: MessageService) {
+    constructor (private http: HttpClient, private messageService: MessageService, private storageService: StorageService) {
     }
 
     getCamps (): Observable<Camp[]> {
         let url = environment.url + "camp";
         return this.http.get<Camp[]>(url)
             .pipe(tap(camps => this.log('fetched camps')), catchError(this.handleError('getCamps', [])));
+    }
+
+    static setCampInLocalStorage (camp: Camp) {
+        StorageService.write("selectedCamp", camp);
+    }
+
+    static getCampFromLocalStorage (): Camp {
+        return StorageService.read<Camp>("selectedCamp")
     }
 
     private handleError<T> (operation = 'operation', result?: T) {

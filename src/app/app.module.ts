@@ -8,7 +8,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { StatisticsComponent } from './statistics/statistics.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
-    MatButtonModule, MatGridListModule, MatSelectModule, MatToolbarModule
+    MatButtonModule, MatCardModule, MatGridListModule, MatSelectModule, MatToolbarModule
 } from "@angular/material";
 import { CampSelectorComponent } from "./statistics/camp-selector/camp-selector.component";
 import { HttpClientModule } from "@angular/common/http";
@@ -34,6 +34,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatGridListModule,
     MatSelectModule,
+    MatCardModule,
     RouterModule.forRoot(routes)
 
   ],
