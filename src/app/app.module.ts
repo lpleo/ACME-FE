@@ -12,9 +12,11 @@ import {
 } from "@angular/material";
 import { CampSelectorComponent } from "./statistics/camp-selector/camp-selector.component";
 import { HttpClientModule } from "@angular/common/http";
+import { CampComponent } from './camp/camp.component';
 
 const routes: Routes = [
     { path: 'statistics', component: StatisticsComponent},
+    { path: 'camp', component: CampComponent},
     { path: '', component: StatisticsComponent}
 ];
 
@@ -23,7 +25,8 @@ const routes: Routes = [
       AppComponent,
       NavigationBarComponent,
       StatisticsComponent,
-      CampSelectorComponent
+      CampSelectorComponent,
+      CampComponent
   ],
   imports: [
     BrowserModule,

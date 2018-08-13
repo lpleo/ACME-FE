@@ -2,9 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+      <div style="text-align:center">
+          <app-navigation-bar>
+          </app-navigation-bar>
+      </div>
+
+      <router-outlet></router-outlet>
+  `
 })
 export class AppComponent {
-  title = 'ACME-FE';
 }

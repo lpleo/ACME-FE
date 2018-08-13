@@ -4,7 +4,7 @@ import { Camp } from "../../classes/camp";
 @Component({
     selector: 'app-camp-selector', template: `
             <mat-form-field>
-                <mat-select [(value)]="selectedCamp" (valueChange)="selectedCampEmitter.emit(selectedCamp)">
+                <mat-select placeholder="Camp year" [(value)]="selectedCamp" (valueChange)="selectedCampEmitter.emit(selectedCamp)">
                     <mat-option *ngFor="let camp of camps" [value]="camp">{{camp.year}}</mat-option>
                 </mat-select>
             </mat-form-field>

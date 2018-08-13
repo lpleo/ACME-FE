@@ -4,14 +4,12 @@ import { Camp } from "../classes/camp";
 
 @Component({
     selector: 'app-statistics', template: `
-        <mat-grid-list cols="2" rowHeight="3:1">
-            <mat-grid-tile>
-                <app-camp-selector [camps]="camps" [selectedCamp]="activeCamp" (selectedCampEmitter)="setNewSelectedCamp($event)"></app-camp-selector>
-            </mat-grid-tile>
-            <mat-grid-tile>{{activeCamp?.name}}</mat-grid-tile>
-            <mat-grid-tile>test</mat-grid-tile>
-            <mat-grid-tile>test</mat-grid-tile>
-        </mat-grid-list>
+        <mat-card>
+            <app-camp-selector [camps]="camps" [selectedCamp]="activeCamp" (selectedCampEmitter)="setNewSelectedCamp($event)"></app-camp-selector>
+            <mat-card>
+                {{activeCamp?.name}}
+            </mat-card>
+        </mat-card>
     `
 })
 export class StatisticsComponent implements OnInit {
@@ -29,7 +27,7 @@ export class StatisticsComponent implements OnInit {
         });
     }
 
-    setNewSelectedCamp(camp: Camp) {
+    setNewSelectedCamp (camp: Camp) {
         this.activeCamp = camp;
         CampService.setCampInLocalStorage(camp);
     }
