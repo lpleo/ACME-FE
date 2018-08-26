@@ -5,28 +5,38 @@ import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from "@angular/router";
-import { StatisticsComponent } from './views/statistics-view/statistics-view.component';
+import { StatisticsViewComponent } from './views/statistics-view/statistics-view.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
     MatButtonModule, MatCardModule, MatGridListModule, MatSelectModule, MatToolbarModule
 } from "@angular/material";
 import { CampSelectorComponent } from "./views/statistics-view/camp-selector/camp-selector.component";
 import { HttpClientModule } from "@angular/common/http";
-import { CampComponent } from './camp/camp.component';
+import { CampViewComponent } from './views/camp-view/camp.component';
+import { PersonViewComponent } from './views/person-view/person-view.component';
+import { ChildTableComponent } from './views/person-view/child-table/child-table.component';
+import { ChildFilterComponent } from './views/person-view/child-filter/child-filter.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const routes: Routes = [
-    { path: 'statistics', component: StatisticsComponent},
-    { path: 'camp', component: CampComponent},
-    { path: '', component: StatisticsComponent}
+    { path: 'statistics', component: StatisticsViewComponent},
+    { path: 'camp', component: CampViewComponent},
+    { path: 'child', component: PersonViewComponent},
+    { path: '', component: StatisticsViewComponent}
 ];
 
 @NgModule({
   declarations: [
       AppComponent,
       NavigationBarComponent,
-      StatisticsComponent,
+      StatisticsViewComponent,
       CampSelectorComponent,
-      CampComponent
+      CampViewComponent,
+      PersonViewComponent,
+      ChildTableComponent,
+      ChildFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +48,9 @@ const routes: Routes = [
     MatGridListModule,
     MatSelectModule,
     MatCardModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatPaginatorModule,
     RouterModule.forRoot(routes)
 
   ],

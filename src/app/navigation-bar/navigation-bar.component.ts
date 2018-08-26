@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
       <mat-toolbar>
           <button mat-button routerLink="/statistics"><b>ACME</b></button>
+          <button mat-button routerLink="/child">Children Overview</button>
           <button mat-button routerLink="/camp">Camp Overview</button>
       </mat-toolbar>
       <br />

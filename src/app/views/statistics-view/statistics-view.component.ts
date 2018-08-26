@@ -7,14 +7,14 @@ import { Camp } from "../../classes/camp";
         <mat-card>
             <app-camp-selector [camps]="camps" [selectedCamp]="activeCamp" 
                 (selectedCampEmitter)="setNewSelectedCamp($event)"></app-camp-selector>
-            <a mat-button routerLink="/">Link</a>
+            <a mat-button routerLink="/child">Link</a>
             <mat-card>
                 {{activeCamp?.name}}
             </mat-card>
         </mat-card>
     `
 })
-export class StatisticsComponent implements OnInit {
+export class StatisticsViewComponent implements OnInit {
 
     constructor (private campService: CampService) {
     }
