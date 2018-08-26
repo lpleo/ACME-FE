@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Camp } from "../../classes/camp";
+import { Camp } from "../../../classes/camp";
 
 @Component({
     selector: 'app-camp-selector', template: `

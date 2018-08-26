@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CampService } from "../services/camp.service";
-import { Camp } from "../classes/camp";
+import { CampService } from "../../services/camp.service";
+import { Camp } from "../../classes/camp";
 
 @Component({
-    selector: 'app-statistics', template: `
+    selector: 'app-statistics-view', template: `
         <mat-card>
-            <app-camp-selector [camps]="camps" [selectedCamp]="activeCamp" (selectedCampEmitter)="setNewSelectedCamp($event)"></app-camp-selector>
+            <app-camp-selector [camps]="camps" [selectedCamp]="activeCamp" 
+                (selectedCampEmitter)="setNewSelectedCamp($event)"></app-camp-selector>
+            <a mat-button routerLink="/">Link</a>
             <mat-card>
                 {{activeCamp?.name}}
             </mat-card>

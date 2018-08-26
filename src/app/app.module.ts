@@ -5,12 +5,12 @@ import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from "@angular/router";
-import { StatisticsComponent } from './statistics/statistics.component';
+import { StatisticsComponent } from './views/statistics-view/statistics-view.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
     MatButtonModule, MatCardModule, MatGridListModule, MatSelectModule, MatToolbarModule
 } from "@angular/material";
-import { CampSelectorComponent } from "./statistics/camp-selector/camp-selector.component";
+import { CampSelectorComponent } from "./views/statistics-view/camp-selector/camp-selector.component";
 import { HttpClientModule } from "@angular/common/http";
 import { CampComponent } from './camp/camp.component';
 
