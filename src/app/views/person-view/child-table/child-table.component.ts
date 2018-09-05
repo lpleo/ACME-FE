@@ -1,25 +1,32 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Child } from '../../../classes/child';
-import { PersonService } from '../../../services/person.service';
 
 @Component({
   selector: 'app-child-table',
   template: `
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
-
-        <!-- Name Column -->
+          
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Name </th>
           <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
-
-        <!-- Surname Column -->
+          
         <ng-container matColumnDef="surname">
           <th mat-header-cell *matHeaderCellDef> Surname </th>
           <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
         </ng-container>
+
+          <ng-container matColumnDef="fiscal code">
+              <th mat-header-cell *matHeaderCellDef> Fiscal Code </th>
+              <td mat-cell *matCellDef="let element"> {{element.fiscalCode}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="birth date">
+              <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+          </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -36,24 +43,18 @@ import { PersonService } from '../../../services/person.service';
 })
 export class ChildTableComponent implements OnInit {
 
-  children = new Array<Child>();
+  @Input()
   dataSource = new MatTableDataSource<Child>([]);
-  displayedColumns: string[] = ['name', 'surname'];
-  
+
+  displayedColumns: string[] = ['name', 'surname', 'fiscal code', 'birth date'];
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private personService: PersonService) { }
+  constructor() { }
 
   ngOnInit() {
-
     this.dataSource.paginator = this.paginator;
-
-    this.personService.getChildren().subscribe((childrenList) => {
-      this.children = childrenList;
-      console.log('children result', this.children);
-      this.dataSource = new MatTableDataSource<Child>(this.children);
-    })
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChildFilter } from '../../classes/child-filter';
-import { ChildFilterComponent } from './child-filter/child-filter.component';
+import {MatTableDataSource} from "@angular/material";
+import {Child} from "../../classes/child";
+import {PersonService} from "../../services/person.service";
 
 @Component({
   selector: 'app-person-view',
@@ -10,7 +12,7 @@ import { ChildFilterComponent } from './child-filter/child-filter.component';
         <app-child-filter></app-child-filter>
       </mat-drawer>
       <mat-drawer-content>
-        <app-child-table></app-child-table>
+        <app-child-table [dataSource]="dataSource"></app-child-table>
       </mat-drawer-content>
     </mat-drawer-container>
   `
@@ -18,11 +20,14 @@ import { ChildFilterComponent } from './child-filter/child-filter.component';
 export class PersonViewComponent implements OnInit {
 
   filter: ChildFilter = new ChildFilter();
+  dataSource = new MatTableDataSource<Child>([]);
 
-  constructor() { }
+  constructor(private personService: PersonService) { }
 
   ngOnInit() {
-    
+      this.personService.getChildren().subscribe((childrenList) => {
+          this.dataSource = new MatTableDataSource<Child>(childrenList);
+      })
   }
 
 }
