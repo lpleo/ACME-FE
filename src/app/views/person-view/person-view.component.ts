@@ -6,15 +6,13 @@ import {PersonService} from "../../services/person.service";
 
 @Component({
   selector: 'app-person-view',
-  template: `
-    <mat-drawer-container class="example-container">
-      <mat-drawer mode="side" opened>
-        <app-child-filter></app-child-filter>
-      </mat-drawer>
-      <mat-drawer-content>
+  template: `      
+        <mat-card>
+            <a mat-button color="primary" routerLink="/child/add">Add children</a>
+            <a mat-button color="primary" routerLink="/child/subscription/add">Add subscription</a>
+            <app-child-filter></app-child-filter>
+        </mat-card>
         <app-child-table [dataSource]="dataSource"></app-child-table>
-      </mat-drawer-content>
-    </mat-drawer-container>
   `
 })
 export class PersonViewComponent implements OnInit {
