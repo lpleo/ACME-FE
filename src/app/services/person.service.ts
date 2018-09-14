@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from "rxjs/operators";
 import { environment } from "../../environments/environment";
 import { of } from "rxjs/internal/observable/of";
@@ -14,10 +14,23 @@ export class PersonService {
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
+  httpOptions = {
+     headers: new HttpHeaders({
+         'Content-Type':  'application/json',
+         'Authorization': 'my-auth-token'
+     })
+  };
+
   getChildren (): Observable<Child[]> {
     let url = environment.url + "person/children";
     return this.http.get<Child[]>(url)
         .pipe(tap(camps => this.log('fetched children')), catchError(this.handleError('getChildren', [])));
+  }
+
+  saveChild(child: Child): Observable<String> {
+    let url = environment.url + "person/child";
+    return this.http.post<String>(url, child, this.httpOptions)
+        .pipe(tap(camps => this.log('save child')), catchError(this.handleError('postChild', 'KO')));
   }
 
   private log (message: string) {
@@ -36,6 +49,6 @@ export class PersonService {
         // Let the app keep running by returning an empty result.
         return of(result as T);
     };
-  } 
+  }
 
 }

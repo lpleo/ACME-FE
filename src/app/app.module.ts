@@ -8,7 +8,12 @@ import { RouterModule, Routes } from "@angular/router";
 import { StatisticsViewComponent } from './views/statistics-view/statistics-view.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
-    MatButtonModule, MatCardModule, MatGridListModule, MatSelectModule, MatToolbarModule
+    MatButtonModule,
+    MatCardModule, MatDividerModule,
+    MatGridListModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatToolbarModule
 } from "@angular/material";
 import { CampSelectorComponent } from "./views/statistics-view/camp-selector/camp-selector.component";
 import { HttpClientModule } from "@angular/common/http";
@@ -19,11 +24,16 @@ import { ChildFilterComponent } from './views/person-view/child-filter/child-fil
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { PersonInsertViewComponent } from './views/person-insert-view/person-insert-view.component';
+import { FormsModule } from "@angular/forms";
 
 const routes: Routes = [
     { path: 'statistics', component: StatisticsViewComponent},
     { path: 'camp', component: CampViewComponent},
     { path: 'child', component: PersonViewComponent},
+    { path: 'child/add', component: PersonInsertViewComponent},
     { path: '', component: StatisticsViewComponent}
 ];
 
@@ -36,10 +46,12 @@ const routes: Routes = [
       CampViewComponent,
       PersonViewComponent,
       ChildTableComponent,
-      ChildFilterComponent
+      ChildFilterComponent,
+      PersonInsertViewComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -51,10 +63,17 @@ const routes: Routes = [
     MatSidenavModule,
     MatTableModule,
     MatPaginatorModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDividerModule,
     RouterModule.forRoot(routes)
 
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
