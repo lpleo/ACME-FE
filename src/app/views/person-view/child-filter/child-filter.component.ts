@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-child-filter',
-  templateUrl: './child-filter.component.html',
-  styleUrls: ['./child-filter.component.css']
+  template: ``
 })
 export class ChildFilterComponent implements OnInit {
 
