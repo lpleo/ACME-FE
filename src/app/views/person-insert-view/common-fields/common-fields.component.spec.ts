@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PersonInsertViewComponent } from './person-insert-view.component';
+import { CommonFieldsComponent } from './common-fields.component';
 
-describe('PersonInsertViewComponent', () => {
-  let component: PersonInsertViewComponent;
-  let fixture: ComponentFixture<PersonInsertViewComponent>;
+describe('CommonFieldsComponent', () => {
+  let component: CommonFieldsComponent;
+  let fixture: ComponentFixture<CommonFieldsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PersonInsertViewComponent ]
+      declarations: [ CommonFieldsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PersonInsertViewComponent);
+    fixture = TestBed.createComponent(CommonFieldsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

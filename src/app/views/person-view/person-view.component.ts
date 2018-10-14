@@ -9,7 +9,8 @@ import {PersonService} from "../../services/person.service";
   template: `      
         <mat-card>
             <a mat-button color="primary" routerLink="/child/add">Add children</a>
-            <a mat-button color="primary" routerLink="/child/subscription/add">Add subscription</a>
+            <a mat-button color="primary" routerLink="/parent/add">Add parent</a>
+            <a mat-button color="primary" routerLink="/subscription/add">Add subscription</a>
             <app-child-filter></app-child-filter>
         </mat-card>
         <app-child-table [dataSource]="dataSource"></app-child-table>

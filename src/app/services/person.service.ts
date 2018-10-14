@@ -6,6 +6,7 @@ import { of } from "rxjs/internal/observable/of";
 import { Observable } from 'rxjs';
 import { Child } from '../classes/child';
 import { MessageService } from './message.service';
+import { Parent } from '../classes/parent';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,12 @@ export class PersonService {
     let url = environment.url + "person/child";
     return this.http.post<String>(url, child, this.httpOptions)
         .pipe(tap(camps => this.log('save child')), catchError(this.handleError('postChild', 'KO')));
+  }
+
+  saveParent(parent: Parent): any {
+    let url = environment.url + "person/parent";
+    return this.http.post<String>(url, parent, this.httpOptions)
+        .pipe(tap(camps => this.log('save parent')), catchError(this.handleError('postParent', 'KO')));
   }
 
   private log (message: string) {

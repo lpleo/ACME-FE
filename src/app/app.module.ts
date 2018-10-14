@@ -26,14 +26,19 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { PersonInsertViewComponent } from './views/person-insert-view/person-insert-view.component';
+import { ChildInsertViewComponent } from './views/person-insert-view/child-insert-view.component';
 import { FormsModule } from "@angular/forms";
+import { CommonFieldsComponent } from './views/person-insert-view/common-fields/common-fields.component';
+import { ChildFieldsComponent } from './views/person-insert-view/child-fields/child-fields.component';
+import { ParentFieldsComponent } from './views/person-insert-view/parent-fields/parent-fields.component';
+import { ParentInsertViewComponent } from './views/person-insert-view/parent-insert-view.component';
 
 const routes: Routes = [
     { path: 'statistics', component: StatisticsViewComponent},
     { path: 'camp', component: CampViewComponent},
     { path: 'child', component: PersonViewComponent},
-    { path: 'child/add', component: PersonInsertViewComponent},
+    { path: 'child/add', component: ChildInsertViewComponent},
+    { path: 'parent/add', component: ParentInsertViewComponent},
     { path: '', component: StatisticsViewComponent}
 ];
 
@@ -47,7 +52,11 @@ const routes: Routes = [
       PersonViewComponent,
       ChildTableComponent,
       ChildFilterComponent,
-      PersonInsertViewComponent
+      ChildInsertViewComponent,
+      CommonFieldsComponent,
+      ChildFieldsComponent,
+      ParentFieldsComponent,
+      ParentInsertViewComponent
   ],
   imports: [
     BrowserModule,
