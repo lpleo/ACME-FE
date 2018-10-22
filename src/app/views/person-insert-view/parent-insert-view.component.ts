@@ -6,15 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-parent-insert-view',
   template: `
-  <mat-card>
-    <mat-card-title>Insert new parent</mat-card-title>
-    <mat-card-content>
-            <app-common-fields [person]="parent"></app-common-fields>
-        <br/><br/>
-            <app-parent-fields [parent]="parent"></app-parent-fields>
-    </mat-card-content>
-    <button mat-button color="primary" (click)="this.saveParent()">Save</button>
-  </mat-card>
+    <app-parent-mask [parent]="parent" (saveParent)="saveParent($event)"></app-parent-mask>
   `,
   styles: [`
     
@@ -29,8 +21,8 @@ export class ParentInsertViewComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveParent() {
-    this.personService.saveParent(this.parent).subscribe((response) => {
+  saveParent(parent: Parent) {
+    this.personService.saveParent(parent).subscribe((response) => {
         if(response !== 'KO') {
             this.router.navigate(['/parent']);
         }

@@ -4,16 +4,9 @@ import { PersonService } from "../../services/person.service";
 import { Router } from "@angular/router";
 
 @Component({
-    selector: 'app-child-insert-view', template: `
-        <mat-card>
-            <mat-card-title>Insert new child</mat-card-title>
-            <mat-card-content>
-                    <app-common-fields [person]="child"></app-common-fields>
-                <br/><br/>
-                    <app-child-fields [child]="child"></app-child-fields>
-            </mat-card-content>
-            <button mat-button color="primary" (click)="this.saveChild()">Save</button>
-        </mat-card>
+    selector: 'app-child-insert-view', 
+    template: `
+        <app-child-mask [child]="child" (saveChild)="saveChild($event)"></app-child-mask>
     `
 })
 export class ChildInsertViewComponent implements OnInit {
@@ -26,8 +19,8 @@ export class ChildInsertViewComponent implements OnInit {
     ngOnInit () {
     }
 
-    saveChild() {
-        this.personService.saveChild(this.child).subscribe((response) => {
+    saveChild(child: Child) {
+        this.personService.saveChild(child).subscribe((response) => {
             console.log('response',response);
             if(response !== 'KO') {
                 this.router.navigate(['/child']);

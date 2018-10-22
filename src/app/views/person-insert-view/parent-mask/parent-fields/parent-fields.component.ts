@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Parent } from '../../../classes/parent';
+import { Parent } from 'src/app/classes/parent';
 
 @Component({
   selector: 'app-parent-fields',
