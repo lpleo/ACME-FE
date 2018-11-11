@@ -28,10 +28,17 @@ export class PersonService {
         .pipe(tap(camps => this.log('fetched children')), catchError(this.handleError('getChildren', [])));
   }
 
-  saveChild(child: Child): Observable<String> {
+  getChildByFiscalCode(fiscalCode: string): Observable<Child> {
     let url = environment.url + "person/child";
-    return this.http.post<String>(url, child, this.httpOptions)
-        .pipe(tap(camps => this.log('save child')), catchError(this.handleError('postChild', 'KO')));
+    return this.http.get<Child>(url,{params: {'fiscalCode': fiscalCode}}).
+      pipe(tap(camps => this.log('fetched child with fiscal code [' + fiscalCode + ']')), 
+        catchError(this.handleError('getChild', null)));
+  }
+
+  saveChild(child: Child): Observable<Child> {
+    let url = environment.url + "person/child";
+    return this.http.post<Child>(url, child, this.httpOptions)
+        .pipe(tap(camps => this.log('save child')), catchError(this.handleError('postChild', null)));
   }
 
   saveParent(parent: Parent): any {

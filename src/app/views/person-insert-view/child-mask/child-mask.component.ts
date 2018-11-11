@@ -7,17 +7,18 @@ import { Child } from 'src/app/classes/child';
     <mat-card>
       <mat-card-title>Insert new child</mat-card-title>
       <mat-card-content>
-              <app-common-fields [person]="child"></app-common-fields>
+              <app-common-fields [edit]="edit" [person]="child"></app-common-fields>
           <br/><br/>
-              <app-child-fields [child]="child"></app-child-fields>
+              <app-child-fields [edit]="edit" [child]="child"></app-child-fields>
       </mat-card-content>
-      <button mat-button color="primary" (click)="saveChild.emit(child)">Save</button>
+      <button mat-button color="primary" (click)="saveChild.emit(child)" [disabled]="!edit">Save</button>
     </mat-card>
   `
 })
 export class ChildMaskComponent implements OnInit {
 
   @Input() child: Child;
+  @Input() edit: boolean = false;
   @Output() saveChild: EventEmitter<Child> = new EventEmitter<Child>();
 
   constructor() { }

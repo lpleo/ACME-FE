@@ -8,11 +8,18 @@ import { Child } from 'src/app/classes/child';
     <mat-card-subtitle>
         Other informations
     </mat-card-subtitle>
-    <mat-form-field class="example-full-width">
-        <input matInput placeholder="Fiscal Code" [(ngModel)]="child.fiscalCode">
+    <mat-form-field>
+        <input matInput 
+          placeholder="Fiscal Code" 
+          [attr.disabled]="edit ? null : 'disabled'"
+          [(ngModel)]="child.fiscalCode">
     </mat-form-field>
     <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Birth date" [(ngModel)]="child.birthDate">
+        <input matInput 
+          [matDatepicker]="picker" 
+          placeholder="Birth date"
+          [attr.disabled]="edit ? null : 'disabled'"
+          [(ngModel)]="child.birthDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -22,6 +29,7 @@ import { Child } from 'src/app/classes/child';
 export class ChildFieldsComponent implements OnInit {
 
   @Input() child: Child;
+  @Input() edit: boolean = false;
 
   constructor() { }
 

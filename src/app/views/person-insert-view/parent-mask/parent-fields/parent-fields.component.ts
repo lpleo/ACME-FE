@@ -8,10 +8,10 @@ import { Parent } from 'src/app/classes/parent';
       <mat-card-subtitle>
           Other informations
       </mat-card-subtitle>
-      <mat-form-field class="example-full-width">
+      <mat-form-field>
           <input matInput placeholder="email" [(ngModel)]="parent.email">
       </mat-form-field>
-      <mat-form-field class="example-full-width">
+      <mat-form-field>
           <input matInput placeholder="telephone" [(ngModel)]="parent.telephoneNumber">
       </mat-form-field>
     </mat-card>

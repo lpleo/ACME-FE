@@ -1,19 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ChildInsertViewComponent } from './child-insert-view.component';
 
-describe('ChildInsertViewComponent', () => {
-  let component: ChildInsertViewComponent;
-  let fixture: ComponentFixture<ChildInsertViewComponent>;
+import { SearchChildComponent } from './search-child.component';
+
+describe('SearchChildComponent', () => {
+  let component: SearchChildComponent;
+  let fixture: ComponentFixture<SearchChildComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChildInsertViewComponent ]
+      declarations: [ SearchChildComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChildInsertViewComponent);
+    fixture = TestBed.createComponent(SearchChildComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

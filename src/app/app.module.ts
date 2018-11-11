@@ -13,7 +13,8 @@ import {
     MatGridListModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatStepperModule
 } from "@angular/material";
 import { CampSelectorComponent } from "./views/statistics-view/camp-selector/camp-selector.component";
 import { HttpClientModule } from "@angular/common/http";
@@ -35,6 +36,7 @@ import { ParentInsertViewComponent } from './views/person-insert-view/parent-ins
 import { SubscriptionViewComponent } from './views/subscription-view/subscription-view.component';
 import { ChildMaskComponent } from './views/person-insert-view/child-mask/child-mask.component';
 import { ParentMaskComponent } from './views/person-insert-view/parent-mask/parent-mask.component';
+import { SearchChildComponent } from './views/subscription-view/search-child/search-child.component';
 
 const routes: Routes = [
     { path: 'statistics', component: StatisticsViewComponent},
@@ -42,6 +44,7 @@ const routes: Routes = [
     { path: 'child', component: PersonViewComponent},
     { path: 'child/add', component: ChildInsertViewComponent},
     { path: 'parent/add', component: ParentInsertViewComponent},
+    { path: 'subscription/add', component: SubscriptionViewComponent},
     { path: '', component: StatisticsViewComponent}
 ];
 
@@ -62,7 +65,8 @@ const routes: Routes = [
       ParentInsertViewComponent,
       SubscriptionViewComponent,
       ChildMaskComponent,
-      ParentMaskComponent
+      ParentMaskComponent,
+      SearchChildComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +86,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatStepperModule,
     MatDividerModule,
     RouterModule.forRoot(routes)
 

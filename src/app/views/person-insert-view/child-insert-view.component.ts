@@ -22,7 +22,7 @@ export class ChildInsertViewComponent implements OnInit {
     saveChild(child: Child) {
         this.personService.saveChild(child).subscribe((response) => {
             console.log('response',response);
-            if(response !== 'KO') {
+            if(response) {
                 this.router.navigate(['/child']);
             }
         });
