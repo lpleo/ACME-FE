@@ -35,16 +35,23 @@ export class PersonService {
         catchError(this.handleError('getChild', null)));
   }
 
+  getParentByFiscalCode(fiscalCode: string): Observable<Parent> {
+      let url = environment.url + "person/parent";
+      return this.http.get<Child>(url,{params: {'fiscalCode': fiscalCode}}).
+      pipe(tap(camps => this.log('fetched parent with fiscal code [' + fiscalCode + ']')),
+          catchError(this.handleError('getParent', null)));
+  }
+
   saveChild(child: Child): Observable<Child> {
     let url = environment.url + "person/child";
     return this.http.post<Child>(url, child, this.httpOptions)
         .pipe(tap(camps => this.log('save child')), catchError(this.handleError('postChild', null)));
   }
 
-  saveParent(parent: Parent): any {
+  saveParent(parent: Parent): Observable<Parent> {
     let url = environment.url + "person/parent";
     return this.http.post<String>(url, parent, this.httpOptions)
-        .pipe(tap(camps => this.log('save parent')), catchError(this.handleError('postParent', 'KO')));
+        .pipe(tap(camps => this.log('save parent')), catchError(this.handleError('postParent', null)));
   }
 
   private log (message: string) {

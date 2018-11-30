@@ -7,10 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-parent-insert-view',
   template: `
     <app-parent-mask [parent]="parent" (saveParent)="saveParent($event)"></app-parent-mask>
-  `,
-  styles: [`
-    
-  `]
+  `
 })
 export class ParentInsertViewComponent implements OnInit {
 
@@ -23,7 +20,7 @@ export class ParentInsertViewComponent implements OnInit {
 
   saveParent(parent: Parent) {
     this.personService.saveParent(parent).subscribe((response) => {
-        if(response !== 'KO') {
+        if(response !== null) {
             this.router.navigate(['/parent']);
         }
     });

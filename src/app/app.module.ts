@@ -37,6 +37,7 @@ import { SubscriptionViewComponent } from './views/subscription-view/subscriptio
 import { ChildMaskComponent } from './views/person-insert-view/child-mask/child-mask.component';
 import { ParentMaskComponent } from './views/person-insert-view/parent-mask/parent-mask.component';
 import { SearchChildComponent } from './views/subscription-view/search-child/search-child.component';
+import { SearchParentComponent } from './views/subscription-view/search-parent/search-parent.component';
 
 const routes: Routes = [
     { path: 'statistics', component: StatisticsViewComponent},
@@ -66,7 +67,8 @@ const routes: Routes = [
       SubscriptionViewComponent,
       ChildMaskComponent,
       ParentMaskComponent,
-      SearchChildComponent
+      SearchChildComponent,
+      SearchParentComponent
   ],
   imports: [
     BrowserModule,
