@@ -15,7 +15,7 @@ import { PersonService } from "../../../services/person.service";
                                 placeholder="'Parent fiscal code"
                                 name="parentFiscalCodeSearchField">
                     </mat-form-field>
-                    <button mat-button color="primary" (click)="search()">Search child</button>
+                    <button mat-button color="primary" (click)="search()">Search parent</button>
                     <button mat-button color="primary" (click)="reset()">Reset</button>
                 </form>
             </mat-card>

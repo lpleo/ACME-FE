@@ -7,17 +7,18 @@ import { Parent } from 'src/app/classes/parent';
     <mat-card>
       <mat-card-title>Insert new parent</mat-card-title>
       <mat-card-content>
-              <app-common-fields [person]="parent"></app-common-fields>
+              <app-common-fields [edit]="edit" [person]="parent"></app-common-fields>
           <br/><br/>
-              <app-parent-fields [parent]="parent"></app-parent-fields>
+              <app-parent-fields [edit]="edit" [parent]="parent"></app-parent-fields>
       </mat-card-content>
-      <button mat-button color="primary" (click)="saveParent.emit(parent)">Save</button>
+      <button mat-button color="primary" (click)="saveParent.emit(parent)" [disabled]="!edit">Save</button>
     </mat-card>
   `
 })
 export class ParentMaskComponent implements OnInit {
 
   @Input() parent: Parent;
+  @Input() edit: boolean = false;
   @Output() saveParent: EventEmitter<Parent> = new EventEmitter<Parent>();
 
   constructor() { }

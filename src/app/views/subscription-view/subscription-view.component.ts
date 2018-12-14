@@ -16,7 +16,7 @@ import { PersonService } from 'src/app/services/person.service';
           </mat-step>
           <mat-step [stepControl]="secondFormGroup">
               <app-search-parent (searchParent)="populateParent($event)" [fiscalCode]="parent.fiscalCode"></app-search-parent>
-              <app-parent-mask [parent]="parent" (saveParent)="saveParent($event)" ></app-parent-mask>
+              <app-parent-mask [parent]="parent" [edit]="editableParent()" (saveParent)="saveParent($event)" ></app-parent-mask>
               <div>
                   <button mat-button matStepperPrevious>Back</button>
                   <button mat-button matStepperNext [disabled]="editableParent()">Next</button>
