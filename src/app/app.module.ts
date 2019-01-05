@@ -38,6 +38,7 @@ import { ChildMaskComponent } from './views/person-insert-view/child-mask/child-
 import { ParentMaskComponent } from './views/person-insert-view/parent-mask/parent-mask.component';
 import { SearchChildComponent } from './views/subscription-view/search-child/search-child.component';
 import { SearchParentComponent } from './views/subscription-view/search-parent/search-parent.component';
+import { SubscriptionTableComponent } from './views/subscription-view/subscription-table/subscription-table.component';
 
 const routes: Routes = [
     { path: 'statistics', component: StatisticsViewComponent},
@@ -68,7 +69,8 @@ const routes: Routes = [
       ChildMaskComponent,
       ParentMaskComponent,
       SearchChildComponent,
-      SearchParentComponent
+      SearchParentComponent,
+      SubscriptionTableComponent
   ],
   imports: [
     BrowserModule,

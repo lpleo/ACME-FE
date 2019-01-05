@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Child } from '../classes/child';
 import { MessageService } from './message.service';
 import { Parent } from '../classes/parent';
+import { Subscription } from '../classes/subscription';
 
 @Injectable({
   providedIn: 'root'
@@ -25,21 +26,28 @@ export class PersonService {
   getChildren (): Observable<Child[]> {
     let url = environment.url + "person/children";
     return this.http.get<Child[]>(url)
-        .pipe(tap(camps => this.log('fetched children')), catchError(this.handleError('getChildren', [])));
+        .pipe(tap(log => this.log('fetched children')), catchError(this.handleError('getChildren', [])));
   }
 
   getChildByFiscalCode(fiscalCode: string): Observable<Child> {
     let url = environment.url + "person/child";
     return this.http.get<Child>(url,{params: {'fiscalCode': fiscalCode}}).
-      pipe(tap(camps => this.log('fetched child with fiscal code [' + fiscalCode + ']')), 
+      pipe(tap(log => this.log('fetched child with fiscal code [' + fiscalCode + ']')), 
         catchError(this.handleError('getChild', null)));
   }
 
   getParentByFiscalCode(fiscalCode: string): Observable<Parent> {
       let url = environment.url + "person/parent";
       return this.http.get<Child>(url,{params: {'fiscalCode': fiscalCode}}).
-      pipe(tap(camps => this.log('fetched parent with fiscal code [' + fiscalCode + ']')),
+      pipe(tap(log => this.log('fetched parent with fiscal code [' + fiscalCode + ']')),
           catchError(this.handleError('getParent', null)));
+  }
+
+  getSubscriptions(childId: number, campId: number): Observable<Subscription[]> {
+    let url = environment.url + `person/child/${childId}/subscription`;
+    return this.http.get<Subscription[]>(url,{params: {'campId': String(campId)}}).
+      pipe(tap(log => this.log(`fetched subscriptions with childId [${childId}] and campId [${campId}]`)), 
+        catchError(this.handleError('getSubscriptions',null)));
   }
 
   saveChild(child: Child): Observable<Child> {

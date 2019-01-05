@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Child } from 'src/app/classes/child';
 import { Parent } from 'src/app/classes/parent';
 import { PersonService } from 'src/app/services/person.service';
+import { Subscription } from 'src/app/classes/subscription';
+import { Camp } from 'src/app/classes/camp';
+import { CampService } from 'src/app/services/camp.service';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-subscription-view',
@@ -19,11 +23,13 @@ import { PersonService } from 'src/app/services/person.service';
               <app-parent-mask [parent]="parent" [edit]="editableParent()" (saveParent)="saveParent($event)" ></app-parent-mask>
               <div>
                   <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext [disabled]="editableParent()">Next</button>
+                  <button mat-button matStepperNext [disabled]="editableParent()" (click)="searchCamps()">Next</button>
               </div>
           </mat-step>
           <mat-step>
-              <!--TODO-->
+              <app-camp-selector [camps]="camps" [selectedCamp]="activeCamp" 
+              (selectedCampEmitter)="searchSubscriptionsFor($event)"></app-camp-selector>
+              <app-subscription-table [dataSource]="subscriptions"></app-subscription-table>
               <div>
                   <button mat-button matStepperPrevious>Back</button>
                   <button mat-button (click)="stepper.reset()">Reset</button>
@@ -36,8 +42,11 @@ export class SubscriptionViewComponent implements OnInit {
 
   child: Child = new Child();
   parent: Parent = new Parent();
+  camps: Camp[] = new Array<Camp>();
+  activeCamp: Camp = new Camp();
+  subscriptions: MatTableDataSource<Subscription> = new MatTableDataSource<Subscription>([]);
 
-  constructor(private personService: PersonService) { }
+  constructor(private personService: PersonService, private campService: CampService) { }
 
   ngOnInit() {
   }
@@ -70,6 +79,23 @@ export class SubscriptionViewComponent implements OnInit {
       this.personService.saveParent(parent).subscribe((response) => {
           if (response) {
               this.parent = response;
+          }
+      })
+  }
+
+  searchCamps() {
+      this.campService.getCamps().subscribe((camps) => {
+          if(camps) {
+              this.camps = camps;
+          }
+      })
+  }
+
+  searchSubscriptionsFor(camp: Camp) {
+      this.activeCamp = camp;
+      this.personService.getSubscriptions(this.activeCamp.id,this.child.id).subscribe((subscriptions) => {
+          if(subscriptions) {
+              this.subscriptions = new MatTableDataSource<Subscription>(subscriptions);
           }
       })
   }
